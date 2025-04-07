@@ -12,5 +12,8 @@
       "dest": "backend/index.js"
     }
   ],
-  "buildCommand": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend"
+  "buildCommand": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+  "rewrites": [
+    { "source": "/favicon.ico", "destination": "/frontend/public/favicon.ico" }
+  ]
 }
