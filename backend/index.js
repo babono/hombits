@@ -273,11 +273,11 @@ app.post("/api/purchase", (req, res) => {
 // ----------------------------------------------------------------
 // Serve React's Build Folder
 // ----------------------------------------------------------------
-app.use(express.static(path.join(__dirname, "../../frontend/build")));
+app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 // Catch-all route to serve React's index.html for non-API routes
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../../frontend/build", "index.html"));
+  res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
 });
 
 // Start the server
