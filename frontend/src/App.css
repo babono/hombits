@@ -1,0 +1,137 @@
+/* =========================
+   GLOBAL STYLES & COLORS
+   ========================= */
+/* A bright yellow bar for nav, plus dark text. Adjust as needed: */
+:root {
+  --brand-yellow: #ffce00;  /* Example "hombits" bright yellow. */
+  --brand-text-dark: #222;  /* Dark text color. */
+  --brand-text-blueish: #182747; /* For headings, etc., if desired */
+  --white: #fff;
+}
+
+/* Reset some base styling */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #fafafa; /* Light grey background */
+  color: var(--brand-text-dark);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* =========================
+   NAVBAR
+   ========================= */
+.navbar {
+  background-color: var(--brand-yellow) !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+  color: var(--brand-text-dark) !important;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  color: var(--brand-text-dark) !important;
+  font-weight: 500;
+}
+.nav-link:hover {
+  color: var(--brand-text-blueish) !important;
+}
+
+/* =========================
+   HEADINGS, TEXT, ETC.
+   ========================= */
+h2, h3, h4, h5 {
+  color: var(--brand-text-blueish);
+  margin-top: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+p {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+/* =========================
+   TABLES
+   ========================= */
+.table thead th {
+  background-color: var(--brand-yellow);
+  color: var(--brand-text-dark);
+}
+
+.table tbody tr:hover {
+  background-color: #fff3cd; /* a faint yellow highlight */
+}
+
+/* =========================
+   BUTTONS
+   ========================= */
+.btn-primary {
+  background-color: var(--brand-text-blueish) !important;
+  border-color: var(--brand-text-blueish) !important;
+  color: var(--white) !important;
+}
+
+.btn-primary:hover {
+  background-color: #0f1a32 !important; /* Slightly darker blueish */
+  border-color: #0f1a32 !important;
+}
+
+/* Could also do a .btn-warning with brand yellow, etc. */
+.btn-warning {
+  background-color: var(--brand-yellow) !important;
+  border-color: var(--brand-text-dark) !important;
+  color: var(--brand-text-dark) !important;
+}
+
+/* =========================
+   CARD STYLING
+   ========================= */
+.card {
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 4px;
+  border: none;
+}
+.card .card-body p {
+  margin-bottom: 0.75rem;
+}
+
+/* =========================
+   HERO SECTION (Home Page)
+   ========================= */
+.hero {
+  background: var(--brand-yellow);
+  padding: 50px 20px;
+  text-align: center;
+  margin-bottom: 2rem;
+  border-radius: 0 0 10px 10px; /* A slight curve at bottom corners */
+}
+.hero h2 {
+  margin-top: 1rem;
+  font-size: 2.2rem;
+}
+.hero p {
+  font-size: 1.1rem;
+  color: var(--brand-text-dark);
+  margin-bottom: 1.5rem;
+}
+.hero-btn {
+  background-color: var(--brand-text-blueish);
+  border-color: var(--brand-text-blueish);
+  color: #fff;
+  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+  border-radius: 4px;
+}
+.hero-btn:hover {
+  background-color: #0f1a32;
+}
+
