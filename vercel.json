@@ -10,10 +10,11 @@
     {
       "src": "/(.*)",
       "dest": "backend/index.js"
+    },
+    {
+      "src": "/favicon.ico",
+      "dest": "/frontend/public/favicon.ico"
     }
   ],
-  "buildCommand": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
-  "rewrites": [
-    { "source": "/favicon.ico", "destination": "/frontend/public/favicon.ico" }
-  ]
+  "buildCommand": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend"
 }
