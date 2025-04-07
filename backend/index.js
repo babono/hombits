@@ -66,6 +66,7 @@ let properties = {
     price_usd: 50000.0,
     fractions_for_sale: [5, 10, 25],
     ownership_records: [],
+    thumbnail: "/images/house/1.jpg",
   },
   102: {
     seller_id: 2,
@@ -73,6 +74,7 @@ let properties = {
     price_usd: 100000.0,
     fractions_for_sale: [10, 20, 30],
     ownership_records: [],
+    thumbnail: "/images/house/2.jpg",
   },
   103: {
     seller_id: 3,
@@ -80,6 +82,7 @@ let properties = {
     price_usd: 80000.0,
     fractions_for_sale: [5, 10, 15, 25],
     ownership_records: [],
+    thumbnail: "/images/house/3.jpg",
   },
   104: {
     seller_id: 4,
@@ -87,6 +90,7 @@ let properties = {
     price_usd: 120000.0,
     fractions_for_sale: [10, 20, 40],
     ownership_records: [],
+    thumbnail: "/images/house/4.jpg",
   },
   105: {
     seller_id: 5,
@@ -94,6 +98,7 @@ let properties = {
     price_usd: 90000.0,
     fractions_for_sale: [5, 10, 15],
     ownership_records: [],
+    thumbnail: "/images/house/5.jpg",
   },
   106: {
     seller_id: 6,
@@ -101,6 +106,7 @@ let properties = {
     price_usd: 75000.0,
     fractions_for_sale: [10, 25],
     ownership_records: [],
+    thumbnail: "/images/house/6.jpg",
   },
   107: {
     seller_id: 7,
@@ -108,6 +114,7 @@ let properties = {
     price_usd: 140000.0,
     fractions_for_sale: [10, 20, 30, 40],
     ownership_records: [],
+    thumbnail: "/images/house/7.jpg",
   },
   108: {
     seller_id: 8,
@@ -115,6 +122,7 @@ let properties = {
     price_usd: 60000.0,
     fractions_for_sale: [5, 10, 20],
     ownership_records: [],
+    thumbnail: "/images/house/8.jpg",
   },
   109: {
     seller_id: 3,
@@ -122,6 +130,7 @@ let properties = {
     price_usd: 70000.0,
     fractions_for_sale: [5, 15],
     ownership_records: [],
+    thumbnail: "/images/house/9.jpg",
   },
   110: {
     seller_id: 1,
@@ -129,76 +138,7 @@ let properties = {
     price_usd: 200000.0,
     fractions_for_sale: [10, 20, 25],
     ownership_records: [],
-  },
-  111: {
-    seller_id: 9,
-    description: "Country Ranch",
-    price_usd: 65000.0,
-    fractions_for_sale: [5, 10, 15],
-    ownership_records: [],
-  },
-  112: {
-    seller_id: 7,
-    description: "Downtown Retail Space",
-    price_usd: 110000.0,
-    fractions_for_sale: [10, 20, 50],
-    ownership_records: [],
-  },
-  113: {
-    seller_id: 11,
-    description: "Industrial Warehouse",
-    price_usd: 80000.0,
-    fractions_for_sale: [20, 30],
-    ownership_records: [],
-  },
-  114: {
-    seller_id: 12,
-    description: "Modern Studio Apartment",
-    price_usd: 40000.0,
-    fractions_for_sale: [5, 10, 15, 25],
-    ownership_records: [],
-  },
-  115: {
-    seller_id: 10,
-    description: "Gated Community Villa",
-    price_usd: 180000.0,
-    fractions_for_sale: [10, 20, 30],
-    ownership_records: [],
-  },
-  116: {
-    seller_id: 13,
-    description: "City Center High-Rise",
-    price_usd: 220000.0,
-    fractions_for_sale: [5, 10, 25, 30],
-    ownership_records: [],
-  },
-  117: {
-    seller_id: 14,
-    description: "Tropical Bungalow",
-    price_usd: 56000.0,
-    fractions_for_sale: [10, 20],
-    ownership_records: [],
-  },
-  118: {
-    seller_id: 15,
-    description: "Hillside Mansion",
-    price_usd: 250000.0,
-    fractions_for_sale: [5, 10, 15, 20],
-    ownership_records: [],
-  },
-  119: {
-    seller_id: 16,
-    description: "Countryside Bed & Breakfast",
-    price_usd: 72000.0,
-    fractions_for_sale: [10, 25],
-    ownership_records: [],
-  },
-  120: {
-    seller_id: 17,
-    description: "Oceanview Duplex",
-    price_usd: 96000.0,
-    fractions_for_sale: [5, 10, 15],
-    ownership_records: [],
+    thumbnail: "/images/house/10.jpg",
   },
 };
 
@@ -268,6 +208,34 @@ app.post("/api/purchase", (req, res) => {
     cost_btc,
     new_balance_buyer: buyers[buyer_id].btc_balance,
   });
+});
+
+app.get("/api/property-listings", async (req, res) => {
+  try {
+    const propertyListings = await Promise.all(
+      Object.keys(properties).map(async (id) => {
+        const property = properties[id];
+        const tokensSold = property.ownership_records.reduce(
+          (sum, record) => sum + record.fraction,
+          0
+        );
+
+        return {
+          id,
+          thumbnail: property.thumbnail,
+          location: `Location ${id}`, // Dummy location
+          price_per_token_btc: usdToBtc(property.price_usd / 100),
+          annual_yield: `${(Math.random() * 10 + 5).toFixed(2)}%`, // Random yield between 5% and 15%
+          percentage_sold: `${tokensSold}%`,
+        };
+      })
+    );
+
+    res.json(propertyListings);
+  } catch (error) {
+    console.error("Error fetching property listings:", error);
+    res.status(500).json({ error: "Failed to fetch property listings" });
+  }
 });
 
 // ----------------------------------------------------------------

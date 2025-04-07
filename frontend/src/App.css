@@ -3,7 +3,8 @@
    ========================= */
 /* A bright yellow bar for nav, plus dark text. Adjust as needed: */
 :root {
-  --brand-yellow: #ffce00;  /* Example "hombits" bright yellow. */
+  --brand-yellow-primary: #F5BB00;  /* Example "hombits" bright yellow. */
+  --brand-yellow-secondary: #FBD603;
   --brand-text-dark: #222;  /* Dark text color. */
   --brand-text-blueish: #182747; /* For headings, etc., if desired */
   --white: #fff;
@@ -13,7 +14,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  font-family: "Arial", sans-serif;
+  font-family: "Ubuntu", sans-serif!important; /* Use Ubuntu font */
   background-color: #fafafa; /* Light grey background */
   color: var(--brand-text-dark);
 }
@@ -27,22 +28,18 @@ a {
    NAVBAR
    ========================= */
 .navbar {
-  background-color: var(--brand-yellow) !important;
+  background-color: var(--white) !important;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding-bottom: 0!important;
+  position: sticky!important;
+  top: 0!important;
+  z-index: 1000!important;
 }
 
-.navbar-brand {
-  color: var(--brand-text-dark) !important;
-  font-weight: bold;
-  font-size: 1.5rem;
-}
-
-.nav-link {
-  color: var(--brand-text-dark) !important;
-  font-weight: 500;
-}
-.nav-link:hover {
-  color: var(--brand-text-blueish) !important;
+.navbar .navbar-border{
+  height: 4px solid var(--brand-yellow-primary);
+  border-bottom: 6px solid var(--brand-yellow-secondary);
+  width: 100%;
 }
 
 /* =========================
@@ -135,3 +132,33 @@ p {
   background-color: #0f1a32;
 }
 
+/* =========================
+  BOTTOM TOOLBAR
+  ========================= */
+.bottom-toolbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--brand-yellow-primary);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.bottom-toolbar a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bottom-toolbar a i {
+  font-size: 20px;
+  margin-bottom: 4px;
+}

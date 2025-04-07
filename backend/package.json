@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "cd ../frontend && npm install && npm run build",
-    "start": "node index.js"    
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +14,7 @@
     "cors": "^2.8.5",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
+    "node-fetch": "^2.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.30.0",
